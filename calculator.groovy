@@ -14,11 +14,13 @@ int count(int left, String operator, int right ) {
                 return left / right
             }
             catch (DivisionByZeroError){
-                println ("Division by zero")
-                return 0
+                println ("Division by zero.Result is incorrect")
+                //return 0
+                throw DivisionByZeroError
             }
             break
     }
+    return 0
 }
 
 
