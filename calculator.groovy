@@ -1,3 +1,22 @@
+assert proccess('2+2') == '4'
+assert proccess('5+12') == '17'
+assert proccess('10+3') == '13'
+assert proccess('-3+10') == '7'
+assert proccess('((80*7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63*7)') == '864'
+assert proccess('((80+7-30+7))+((4+9+49)+(325+5+13+1000)-63+7)') == '1413'
+assert proccess('1+(10-15)*(10-15)') == '26'
+assert proccess('(-5)*(-2)') == '10'
+assert proccess('((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63/7)') == '513'
+assert proccess('((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/0)-63/7)') == ""
+assert proccess('2-2') == '0'
+assert proccess('2*2') == '4'
+assert proccess('2/2') == '1'
+assert proccess('(-3)+(-10)') == '-13'
+assert proccess('(-3)*10') == '-30'
+assert proccess('(-3)*10') == '-30'
+assert proccess('2+2*(5-7)') == '-2'
+
+
 int count(int left, String operator, int right ) {
     switch (operator){
         case '+':
@@ -74,25 +93,6 @@ def proccess (String expression) {
 //BufferedReader read = new BufferedReader(new InputStreamReader(System.in))
 //print "Expression:"
 //def input = read.readLine()
-/*
-String input = '((80*7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63*7)' //864
-String input2 = '((80+7-30+7))+((4+9+49)+(325+5+13+1000)-63+7)' //1413
-String input3 = '((350))+3*((85)+(325)-441)' //257
-String input4 = '-4-4' // -8
-String input5 = '(-5)*(-2)' //10
-String input6 = '1+(10-15)*(10-15)' //26
-String input7 = "((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63/7)" //513\
-String input8= '((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/0)-63/7)'
-*/
-/*
-println(proccess(input))
-println(proccess(input2))
-println(proccess(input3))
-println(proccess(input4))
-println(proccess(input5))
-println(proccess(input6))
-println(proccess(input7))
-println(proccess(input8))
-*/
+//println(proccess(input))
 
 
