@@ -14,8 +14,6 @@ int count(int left, String operator, int right ) {
                 return left / right
             }
             catch (DivisionByZeroError){
-                println ("Division by zero.Result is incorrect")
-                //return 0
                 throw DivisionByZeroError
             }
             break
@@ -38,12 +36,18 @@ def proccess (String expression) {
     }
         //multiplication and division of numbers (-1)*1  (-1)*(-1)  1*(-1) 1*1
     else if ( expression.find(/(\(\-\d+\)|\d+)([\/\*])(\(\-\d+\)|\d+)/) != null) {
-        result = expression.find(/(\(\-\d+\)|\d+)([\/\*])(\(\-\d+\)|\d+)/) {
-            match, left, operator, right ->
-                count(left.find(/(\-\d+|\d+)/).toInteger(), operator, right.find(/(\-\d+|\d+)/).toInteger())
+        try{
+            result = expression.find(/(\(\-\d+\)|\d+)([\/\*])(\(\-\d+\)|\d+)/) {
+                match, left, operator, right ->
 
-        }.toInteger()
-        modified = expression.replaceFirst(/(\(\-\d+\)|\d+)([\/\*])(\(\-\d+\)|\d+)/, result.toString())
+                        count(left.find(/(\-\d+|\d+)/).toInteger(), operator, right.find(/(\-\d+|\d+)/).toInteger())
+            }.toInteger()
+            modified = expression.replaceFirst(/(\(\-\d+\)|\d+)([\/\*])(\(\-\d+\)|\d+)/, result.toString())
+        }
+        catch (DivisionByZeroError){
+            println ("Division by zero.")
+            return ""
+        }
     }
     else if (expression.find(/(\(\-\d+\)|\d+|\-\d+)([\-\+])(\(\-\d+\)|\d+|\-\d+)(?![\/\*])/) != null){
         result = expression.find(/(\(\-\d+\)|\d+|\-\d+)([\-\+])(\(\-\d+\)|\d+|\-\d+)(?![\/\*])/) {
@@ -77,7 +81,8 @@ String input3 = '((350))+3*((85)+(325)-441)' //257
 String input4 = '-4-4' // -8
 String input5 = '(-5)*(-2)' //10
 String input6 = '1+(10-15)*(10-15)' //26
-String input7 = "((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63/7)" //513
+String input7 = "((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/1000)-63/7)" //513\
+String input8= '((80/7-30*7)+(4*9+49)+(325+5*13/1000)-63*7)*3+3*((4*9+49)+(325+5*13/0)-63/7)'
 */
 /*
 println(proccess(input))
@@ -87,4 +92,7 @@ println(proccess(input4))
 println(proccess(input5))
 println(proccess(input6))
 println(proccess(input7))
+println(proccess(input8))
 */
+
+
